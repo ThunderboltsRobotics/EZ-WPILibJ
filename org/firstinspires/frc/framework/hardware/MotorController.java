@@ -1,7 +1,7 @@
 package org.firstinspires.frc.framework.hardware;
 
 import org.firstinspires.frc.framework.software.RioCANID;
-import org.firstinspires.frc.framework.granulation.GenericCANMotorController;
+//import org.firstinspires.frc.framework.granulation.GenericCANMotorController;
 import org.firstinspires.frc.framework.granulation.GenericPWMMotorController;
 
 /**
@@ -19,7 +19,7 @@ public class MotorController {
 	private final MotorControllerType type;
 	private final boolean isCAN;
 	private GenericPWMMotorController rawPWMCopyInstance;
-	private GenericCANMotorController rawCANInstance;
+//	private GenericCANMotorController rawCANInstance;
 	private boolean isReversed = false;
 
 	@SuppressWarnings("SameParameterValue")
@@ -29,7 +29,7 @@ public class MotorController {
 		}
 		type = initType;
 		isCAN = true;
-		rawCANInstance = new GenericCANMotorController(initPort, type);
+//		rawCANInstance = new GenericCANMotorController(initPort, type);
 	}
 	public MotorController(RioHWPort port, MotorControllerType type) {
 		switch (port.getType()) {
@@ -55,7 +55,7 @@ public class MotorController {
 	public void setSpeed(double d) {
 		if (isReversed) d = -d;
 		if (isCAN) {
-			rawCANInstance.set(d);
+//			rawCANInstance.set(d);
 		} else {
 			rawPWMCopyInstance.set(d);
 		}

@@ -1,7 +1,7 @@
 package org.firstinspires.frc.framework.granulation;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.communication.FRCNetworkCommunicationsLibrary;
+//import edu.wpi.first.wpilibj.communication.FRCNetworkCommunicationsLibrary;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.firstinspires.frc.framework.abstraction.MatchPhase;
 
@@ -33,29 +33,29 @@ public abstract class BetterRobot extends CustomRobotBase {
 		}
 		lastInitialized = m;
 	}
-	private void reportCodeReady() {
-		FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramStarting();
-	}
-	private void reportCodeRunning(MatchPhase m) {
-		switch (m) {
-			case Disabled:
-				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramDisabled();
-				break;
-			case Auto:
-				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramAutonomous();
-				break;
-			case Teleop:
-				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramTeleop();
-				break;
-			case Test:
-				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramTest();
-				break;
-		}
-	}
+//	private void reportCodeReady() {
+//		FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramStarting();
+//	}
+//	private void reportCodeRunning(MatchPhase m) {
+//		switch (m) {
+//			case Disabled:
+//				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramDisabled();
+//				break;
+//			case Auto:
+//				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramAutonomous();
+//				break;
+//			case Teleop:
+//				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramTeleop();
+//				break;
+//			case Test:
+//				FRCNetworkCommunicationsLibrary.FRCNetworkCommunicationObserveUserProgramTest();
+//				break;
+//		}
+//	}
 
 	public void startCompetition() {
 		initialize();
-		reportCodeReady();
+//		reportCodeReady();
 		while (true) try {
 			if (DS.isEnabled()) {
 				if (DS.isTest()) {
@@ -77,7 +77,7 @@ public abstract class BetterRobot extends CustomRobotBase {
 				}
 			}
 			if (DS.isNewControlData()) {
-				reportCodeRunning(lastInitialized);
+//				reportCodeRunning(lastInitialized);
 				switch (lastInitialized) {
 					case Disabled:
 						disabledLoop();
@@ -96,13 +96,7 @@ public abstract class BetterRobot extends CustomRobotBase {
 			DS.waitForData();
 		} catch (Throwable t) {
 			//Display error in DS
-			System.out.println("Error caught in a routine running during the " +
-					(DS.isEnabled() ?
-							(DS.isTest() ? "Test" :
-									(DS.isAutonomous() ? "Auto" : "Teleop")
-							)
-					: "Disabled")
-					+ " phase");
+			System.out.println("Error caught in a routine running during the " + (DS.isEnabled() ? (DS.isTest() ? "Test" : (DS.isAutonomous() ? "Auto" : "Teleop")) : "Disabled") + " phase");
 			t.printStackTrace();
 			break;
 		}

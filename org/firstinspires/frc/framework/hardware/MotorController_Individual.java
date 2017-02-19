@@ -27,8 +27,8 @@ public class MotorController_Individual {
 	private Victor rawVictorInstance;
 	private VictorSP rawVictorSPInstance;
 
-	private CANJaguar rawJaguarCANInstance;
-	private CANTalon rawTalonSRXCANInstance;
+//	private CANJaguar rawJaguarCANInstance;
+//	private CANTalon rawTalonSRXCANInstance;
 
 	private boolean isReversed = false;
 
@@ -73,10 +73,10 @@ public class MotorController_Individual {
 		isCAN = true;
 		switch (type) {
 			case Jaguar:
-				rawJaguarCANInstance = new CANJaguar(rawIndex);
+//				rawJaguarCANInstance = new CANJaguar(rawIndex);
 				break;
 			case TalonSRX:
-				rawTalonSRXCANInstance = new CANTalon(rawIndex);
+//				rawTalonSRXCANInstance = new CANTalon(rawIndex);
 				break;
 		}
 	}
@@ -104,7 +104,7 @@ public class MotorController_Individual {
 		switch (type) {
 			case Jaguar:
 				if (isCAN) {
-					rawJaguarCANInstance.set(d);
+//					rawJaguarCANInstance.set(d);
 				} else {
 					rawJaguarInstance.set(d);
 				}
@@ -121,7 +121,7 @@ public class MotorController_Individual {
 				break;
 			case TalonSRX:
 				if (isCAN) {
-					rawTalonSRXCANInstance.set(d);
+//					rawTalonSRXCANInstance.set(d);
 				} else {
 					rawTalonSRXInstance.set(d);
 				}
